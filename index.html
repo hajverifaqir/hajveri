@@ -1174,7 +1174,7 @@
           </div>
           <h3>Building Smooth 60 FPS Touch Controls for Mobile Games</h3>
           <p>How input buffering, delta-time physics, and responsive hitboxes turn a basic aeroplane prototype into a fun arcade game.</p>
-          <button class="read-more-btn" data-post="0">Read Article &rarr;</button>
+          <a href="post.html?id=game-controls" class="read-more-btn">Read Article &rarr;</a>
         </article>
 
         <article class="blog-card">
@@ -1184,7 +1184,7 @@
           </div>
           <h3>Designing PocketCalc: Clean UI &amp; Safe Math Parsing</h3>
           <p>Why avoiding naive evaluation matters in utility apps and how to build snappy button feedback on small screens.</p>
-          <button class="read-more-btn" data-post="1">Read Article &rarr;</button>
+          <a href="post.html?id=pocketcalc-ui" class="read-more-btn">Read Article &rarr;</a>
         </article>
 
         <article class="blog-card">
@@ -1194,7 +1194,7 @@
           </div>
           <h3>My Checklist Before Releasing on Google Play</h3>
           <p>From App Bundles (AAB) and adaptive icons to store screenshots and privacy policy hosting on GitHub Pages.</p>
-          <button class="read-more-btn" data-post="2">Read Article &rarr;</button>
+          <a href="post.html?id=google-play-checklist" class="read-more-btn">Read Article &rarr;</a>
         </article>
       </div>
     </section>
@@ -1268,14 +1268,6 @@
       </div>
     </section>
   </main>
-
-  <!-- BLOG ARTICLE MODAL -->
-  <div class="modal-backdrop" id="blogModal" aria-hidden="true">
-    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-      <button class="modal-close" id="modalClose" aria-label="Close article">&times;</button>
-      <div class="modal-body" id="modalBody"></div>
-    </div>
-  </div>
 
   <footer>
     <div class="container">
@@ -1780,71 +1772,6 @@
           expr += val;
           updateScreen();
         }
-      });
-    })();
-
-    // ====== 5. BLOG ARTICLE MODAL ======
-    (() => {
-      const posts = [
-        {
-          category: 'Game Dev &bull; Nov 2026',
-          title: 'Building Smooth 60 FPS Touch Controls for Mobile Games',
-          paragraphs: [
-            'When I started prototyping SkyPilot, my first mistake was tying plane movement directly to frame counts instead of elapsed delta-time. On 120Hz mobile screens, the plane fell twice as fast as on 60Hz monitors.',
-            'Switching to delta-normalized velocity and giving the aeroplane a slightly forgiving circular hitbox immediately made gameplay feel fairer and more responsive.',
-            'Next up, I plan to port the core loop into Unity and add parallax city backgrounds, sound effects, and Google Play Games achievements.'
-          ]
-        },
-        {
-          category: 'Mobile Apps &bull; Oct 2026',
-          title: 'Designing PocketCalc: Clean UI & Safe Math Parsing',
-          paragraphs: [
-            'Utility apps like calculators live or die by speed and reliability. Users expect instant response on every tap, clear expression history, and zero crashes on edge cases like dividing by zero or double decimals.',
-            'Instead of relying on unsafe expression evaluation, PocketCalc uses a lightweight Shunting-Yard parser that respects operator precedence (multiplication and division before addition and subtraction).',
-            'I am currently bringing this exact layout to Flutter with haptic button feedback and custom themes for Android.'
-          ]
-        },
-        {
-          category: 'Publishing &bull; Sep 2026',
-          title: 'My Checklist Before Releasing on Google Play',
-          paragraphs: [
-            'Shipping an Android app or game involves more than writing clean code. Before submitting an Android App Bundle (.aab) to the Google Play Console, make sure you have:',
-            '1. Adaptive launcher icons and at least 4 high-resolution phone screenshots.',
-            '2. A clear, hosted Privacy Policy URL (hosting it right inside your GitHub Pages repository is completely free and fast!).',
-            '3. Closed testing with real Android devices to verify screen scaling across different aspect ratios.'
-          ]
-        }
-      ];
-
-      const modal = document.getElementById('blogModal');
-      const modalBody = document.getElementById('modalBody');
-      const modalClose = document.getElementById('modalClose');
-
-      document.querySelectorAll('.read-more-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const post = posts[Number(btn.dataset.post)];
-          if (!post) return;
-          modalBody.innerHTML = `
-            <span class="blog-category">${post.category}</span>
-            <h3 id="modalTitle">${post.title}</h3>
-            ${post.paragraphs.map(p => `<p>${p}</p>`).join('')}
-          `;
-          modal.classList.add('open');
-          modal.setAttribute('aria-hidden', 'false');
-        });
-      });
-
-      function closeModal() {
-        modal.classList.remove('open');
-        modal.setAttribute('aria-hidden', 'true');
-      }
-
-      modalClose.addEventListener('click', closeModal);
-      modal.addEventListener('click', (e) => {
-        if (e.target === modal) closeModal();
-      });
-      window.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
       });
     })();
   </script>
