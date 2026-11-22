@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Your Name | Mobile App & Game Developer</title>
-  <meta name="description" content="Portfolio of a mobile app and indie game developer. Building engaging apps and games for iOS and Android." />
+  <meta name="description" content="Portfolio of a mobile app and indie game developer. Play live web demos, read devlogs, and explore Android & iOS releases." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
@@ -15,6 +15,7 @@
       --bg: #0b0f19;
       --bg-card: #131a2a;
       --bg-card-hover: #1a2338;
+      --bg-input: #0d1322;
       --text: #f1f5f9;
       --text-muted: #94a3b8;
       --border: #1e293b;
@@ -28,6 +29,7 @@
       --bg: #f8fafc;
       --bg-card: #ffffff;
       --bg-card-hover: #f1f5f9;
+      --bg-input: #f1f5f9;
       --text: #0f172a;
       --text-muted: #475569;
       --border: #e2e8f0;
@@ -56,7 +58,7 @@
       transition: background-color 0.3s ease, color 0.3s ease;
     }
 
-    h1, h2, h3 {
+    h1, h2, h3, h4 {
       font-family: 'Space Grotesk', sans-serif;
       line-height: 1.2;
     }
@@ -68,7 +70,7 @@
 
     .container {
       width: 100%;
-      max-width: 1100px;
+      max-width: 1120px;
       margin: 0 auto;
       padding: 0 1.5rem;
     }
@@ -106,7 +108,7 @@
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 2rem;
+      gap: 1.75rem;
       list-style: none;
     }
 
@@ -151,7 +153,7 @@
 
     /* ====== HERO ====== */
     .hero {
-      padding: 6rem 0 4.5rem;
+      padding: 5.5rem 0 4rem;
       text-align: center;
     }
 
@@ -183,7 +185,7 @@
     }
 
     .hero h1 {
-      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-size: clamp(2.3rem, 5vw, 3.7rem);
       margin-bottom: 1.25rem;
       letter-spacing: -0.02em;
     }
@@ -196,14 +198,15 @@
 
     .hero p {
       max-width: 620px;
-      margin: 0 auto 2.25rem;
+      margin: 0 auto 2rem;
       color: var(--text-muted);
-      font-size: 1.125rem;
+      font-size: 1.1rem;
     }
 
     .hero-cta {
       display: flex;
       justify-content: center;
+      align-items: center;
       gap: 1rem;
       flex-wrap: wrap;
     }
@@ -211,8 +214,9 @@
     .btn {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 0.5rem;
-      padding: 0.8rem 1.5rem;
+      padding: 0.8rem 1.4rem;
       border-radius: 10px;
       font-weight: 600;
       font-size: 0.95rem;
@@ -243,9 +247,52 @@
       transform: translateY(-2px);
     }
 
+    /* ====== GOOGLE PLAY BADGE ====== */
+    .play-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: #000000;
+      color: #ffffff;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 0.45rem 0.9rem;
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .play-badge:hover {
+      transform: translateY(-2px);
+      border-color: #10b981;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    .play-badge-lg {
+      padding: 0.55rem 1.1rem;
+    }
+
+    .play-badge-text {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      line-height: 1.1;
+    }
+
+    .play-badge-small {
+      font-size: 0.62rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #cbd5e1;
+    }
+
+    .play-badge-main {
+      font-size: 0.98rem;
+      font-weight: 700;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
     /* ====== SECTIONS ====== */
     section {
-      padding: 4.5rem 0;
+      padding: 4.25rem 0;
     }
 
     .section-header {
@@ -254,7 +301,7 @@
       align-items: flex-end;
       flex-wrap: wrap;
       gap: 1rem;
-      margin-bottom: 2.5rem;
+      margin-bottom: 2.25rem;
     }
 
     .section-title {
@@ -321,7 +368,7 @@
     }
 
     .project-banner {
-      height: 170px;
+      height: 160px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -389,22 +436,364 @@
 
     .project-links {
       display: flex;
-      gap: 1rem;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.75rem;
       padding-top: 1rem;
       border-top: 1px solid var(--border);
       font-size: 0.88rem;
       font-weight: 600;
     }
 
-    .project-links a {
+    .project-link-text {
       display: inline-flex;
       align-items: center;
       gap: 0.35rem;
       color: var(--accent);
     }
 
-    .project-links a:hover {
+    .project-link-text:hover {
       text-decoration: underline;
+    }
+
+    /* ====== PLAYGROUND (GAME + CALCULATOR) ====== */
+    .playground-grid {
+      display: grid;
+      grid-template-columns: 1.45fr 1fr;
+      gap: 1.75rem;
+      align-items: stretch;
+    }
+
+    .demo-panel {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .demo-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .demo-header h3 {
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .score-pills {
+      display: flex;
+      gap: 0.5rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+
+    .score-pill {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      padding: 0.3rem 0.65rem;
+      border-radius: 999px;
+      color: var(--text-muted);
+    }
+
+    .score-pill strong {
+      color: var(--text);
+    }
+
+    /* Aeroplane Game Canvas */
+    .game-wrapper {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: #0f172a;
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #planeCanvas {
+      width: 100%;
+      height: auto;
+      display: block;
+      cursor: pointer;
+      touch-action: manipulation;
+    }
+
+    .game-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(11, 15, 25, 0.72);
+      backdrop-filter: blur(4px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 1.5rem;
+      color: #f8fafc;
+      transition: opacity 0.2s ease;
+    }
+
+    .game-overlay.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .game-overlay h4 {
+      font-size: 1.5rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .game-overlay p {
+      color: #cbd5e1;
+      font-size: 0.9rem;
+      margin-bottom: 1.15rem;
+    }
+
+    .demo-hint {
+      margin-top: 0.85rem;
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    /* Calculator App Widget */
+    .calc-shell {
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.1rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      justify-content: space-between;
+    }
+
+    .calc-screen {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.9rem 1rem;
+      margin-bottom: 1rem;
+      text-align: right;
+      min-height: 86px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+
+    .calc-history {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      min-height: 1.2em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .calc-display {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .calc-keys {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.6rem;
+    }
+
+    .calc-btn {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      padding: 0.9rem 0.5rem;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      color: var(--text);
+      cursor: pointer;
+      transition: transform 0.1s ease, background-color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .calc-btn:hover {
+      border-color: var(--accent);
+      background: var(--bg-card-hover);
+    }
+
+    .calc-btn:active {
+      transform: scale(0.96);
+    }
+
+    .calc-btn.op {
+      color: var(--accent);
+      background: var(--accent-glow);
+      border-color: rgba(99, 102, 241, 0.25);
+    }
+
+    .calc-btn.fn {
+      color: #f43f5e;
+    }
+
+    .calc-btn.eq {
+      background: var(--accent);
+      color: #ffffff;
+      border-color: var(--accent);
+      grid-column: span 2;
+    }
+
+    .calc-btn.eq:hover {
+      filter: brightness(1.1);
+    }
+
+    /* ====== BLOG / DEVLOG SECTION ====== */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .blog-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+    }
+
+    .blog-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 0.85rem;
+    }
+
+    .blog-category {
+      color: var(--accent-secondary);
+      font-weight: 600;
+      background: rgba(16, 185, 129, 0.12);
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+    }
+
+    .blog-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.65rem;
+    }
+
+    .blog-card p {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      margin-bottom: 1.25rem;
+      flex-grow: 1;
+    }
+
+    .read-more-btn {
+      background: none;
+      border: none;
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0;
+      align-self: flex-start;
+    }
+
+    .read-more-btn:hover {
+      text-decoration: underline;
+    }
+
+    /* Blog Modal */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(11, 15, 25, 0.8);
+      backdrop-filter: blur(6px);
+      z-index: 200;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal-content {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      max-width: 680px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      padding: 2rem;
+      position: relative;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.45);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      display: grid;
+      place-items: center;
+    }
+
+    .modal-close:hover {
+      border-color: var(--accent);
+    }
+
+    .modal-body h3 {
+      font-size: 1.65rem;
+      margin: 0.5rem 0 1rem;
+      padding-right: 2rem;
+    }
+
+    .modal-body p {
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      line-height: 1.75;
     }
 
     /* ====== TECH STACK ====== */
@@ -458,6 +847,7 @@
     .social-links {
       display: flex;
       justify-content: center;
+      align-items: center;
       gap: 1rem;
       flex-wrap: wrap;
     }
@@ -472,6 +862,12 @@
     }
 
     /* ====== MOBILE RESPONSIVE ====== */
+    @media (max-width: 900px) {
+      .playground-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
     @media (max-width: 768px) {
       .nav-links {
         position: fixed;
@@ -511,13 +907,15 @@
 
       <ul class="nav-links" id="navLinks">
         <li><a href="#projects">Apps &amp; Games</a></li>
+        <li><a href="#playground">Live Demos</a></li>
+        <li><a href="#blog">Blog</a></li>
         <li><a href="#skills">Tech Stack</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
 
       <div class="nav-actions">
         <button class="icon-btn" id="themeToggle" aria-label="Toggle Dark/Light Mode" title="Toggle theme">
-          <svg id="themeIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="5"></circle>
             <line x1="12" y1="1" x2="12" y2="3"></line>
             <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -553,16 +951,106 @@
         Intuitive Mobile Experiences
       </h1>
       <p>
-        Hi, I'm <strong>Your Name</strong> — a developer focused on creating responsive iOS &amp; Android apps and engaging 2D/3D mobile games.
+        Hi, I'm <strong>Your Name</strong> — an indie developer creating Android &amp; iOS apps, interactive web tools, and arcade mobile games.
       </p>
       <div class="hero-cta">
-        <a href="#projects" class="btn btn-primary">Explore My Work</a>
-        <a href="https://github.com/YOUR_USERNAME" target="_blank" rel="noopener" class="btn btn-outline">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+        <a href="#playground" class="btn btn-primary">Play Mini-Game &amp; Tools</a>
+
+        <!-- Google Play Store Developer Badge -->
+        <a href="https://play.google.com/store/apps" target="_blank" rel="noopener" class="play-badge play-badge-lg" aria-label="Get it on Google Play">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M3.609 1.814L13.792 12 3.61 22.186a1.75 1.75 0 01-.61-1.335V3.149c0-.525.23-.998.609-1.335z" fill="#00D2FF"/>
+            <path d="M17.204 8.588L13.792 12l3.412 3.412 3.854-2.188c.696-.395.696-1.453 0-1.848l-3.854-2.188z" fill="#FFCE00"/>
+            <path d="M17.204 15.412L13.792 12 3.609 22.186c.42.37 1.044.458 1.622.13l11.973-6.904z" fill="#FF3A44"/>
+            <path d="M17.204 8.588L5.231 1.684c-.578-.328-1.202-.24-1.622.13L13.792 12l3.412-3.412z" fill="#00F076"/>
           </svg>
+          <span class="play-badge-text">
+            <span class="play-badge-small">Get it on</span>
+            <span class="play-badge-main">Google Play</span>
+          </span>
+        </a>
+
+        <a href="https://github.com/YOUR_USERNAME" target="_blank" rel="noopener" class="btn btn-outline">
           GitHub Profile
         </a>
+      </div>
+    </section>
+
+    <!-- PLAYGROUND SECTION: AEROPLANE GAME + CALCULATOR APP -->
+    <section id="playground" class="container">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Interactive Arcade &amp; App Demo</h2>
+          <p class="section-subtitle">Try my mini aeroplane game and mobile calculator right in your browser.</p>
+        </div>
+      </div>
+
+      <div class="playground-grid">
+        <!-- 1. Aeroplane Flying Game -->
+        <div class="demo-panel">
+          <div class="demo-header">
+            <h3>✈️ SkyPilot Mini-Game</h3>
+            <div class="score-pills">
+              <span class="score-pill">Score: <strong id="gameScore">0</strong></span>
+              <span class="score-pill">Best: <strong id="gameBest">0</strong></span>
+            </div>
+          </div>
+
+          <div class="game-wrapper">
+            <canvas id="planeCanvas" width="560" height="330"></canvas>
+            <div class="game-overlay" id="gameOverlay">
+              <h4 id="overlayTitle">SkyPilot Aeroplane</h4>
+              <p id="overlayDesc">Tap, click, or press Space / Up Arrow to fly. Dodge pillars and grab stars (+5 pts)!</p>
+              <button class="btn btn-primary" id="startGameBtn">Take Off</button>
+            </div>
+          </div>
+
+          <div class="demo-hint">
+            <span>Controls: <strong>Click / Tap / Space / ↑</strong></span>
+            <span>Built with HTML5 Canvas</span>
+          </div>
+        </div>
+
+        <!-- 2. Calculator App -->
+        <div class="demo-panel">
+          <div class="demo-header">
+            <h3>🧮 PocketCalc App</h3>
+            <span class="score-pill">v1.0 Web Preview</span>
+          </div>
+
+          <div class="calc-shell">
+            <div class="calc-screen">
+              <div class="calc-history" id="calcHistory"></div>
+              <div class="calc-display" id="calcDisplay">0</div>
+            </div>
+
+            <div class="calc-keys" id="calcKeys">
+              <button class="calc-btn fn" data-action="clear">C</button>
+              <button class="calc-btn fn" data-action="del">DEL</button>
+              <button class="calc-btn op" data-val="%">%</button>
+              <button class="calc-btn op" data-val="/">÷</button>
+
+              <button class="calc-btn" data-val="7">7</button>
+              <button class="calc-btn" data-val="8">8</button>
+              <button class="calc-btn" data-val="9">9</button>
+              <button class="calc-btn op" data-val="*">×</button>
+
+              <button class="calc-btn" data-val="4">4</button>
+              <button class="calc-btn" data-val="5">5</button>
+              <button class="calc-btn" data-val="6">6</button>
+              <button class="calc-btn op" data-val="-">−</button>
+
+              <button class="calc-btn" data-val="1">1</button>
+              <button class="calc-btn" data-val="2">2</button>
+              <button class="calc-btn" data-val="3">3</button>
+              <button class="calc-btn op" data-val="+">+</button>
+
+              <button class="calc-btn" data-val="0">0</button>
+              <button class="calc-btn" data-val=".">.</button>
+              <button class="calc-btn eq" data-action="equals">=</button>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -585,20 +1073,31 @@
         <!-- Project 1: Game -->
         <article class="project-card" data-category="game">
           <div class="project-banner banner-game">
-            🎮
+            ✈️
             <span class="project-type">Mobile Game</span>
           </div>
           <div class="project-body">
-            <h3>Project Neon Runner</h3>
-            <p>A fast-paced endless cyberpunk platformer built for mobile touchscreens with procedural level generation.</p>
+            <h3>SkyPilot Endless</h3>
+            <p>A fast-paced arcade aeroplane runner built for mobile touchscreens with dynamic weather and leaderboards.</p>
             <div class="tags">
               <span class="tag">Unity</span>
               <span class="tag">C#</span>
               <span class="tag">Android / iOS</span>
             </div>
             <div class="project-links">
-              <a href="https://github.com/YOUR_USERNAME" target="_blank" rel="noopener">Source Code &rarr;</a>
-              <a href="#">Devlog / Demo &rarr;</a>
+              <a href="https://play.google.com/store/apps" target="_blank" rel="noopener" class="play-badge">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <path d="M3.609 1.814L13.792 12 3.61 22.186a1.75 1.75 0 01-.61-1.335V3.149c0-.525.23-.998.609-1.335z" fill="#00D2FF"/>
+                  <path d="M17.204 8.588L13.792 12l3.412 3.412 3.854-2.188c.696-.395.696-1.453 0-1.848l-3.854-2.188z" fill="#FFCE00"/>
+                  <path d="M17.204 15.412L13.792 12 3.609 22.186c.42.37 1.044.458 1.622.13l11.973-6.904z" fill="#FF3A44"/>
+                  <path d="M17.204 8.588L5.231 1.684c-.578-.328-1.202-.24-1.622.13L13.792 12l3.412-3.412z" fill="#00F076"/>
+                </svg>
+                <span class="play-badge-text">
+                  <span class="play-badge-small">Get it on</span>
+                  <span class="play-badge-main" style="font-size:0.82rem;">Google Play</span>
+                </span>
+              </a>
+              <a href="https://github.com/YOUR_USERNAME" target="_blank" rel="noopener" class="project-link-text">Source Code &rarr;</a>
             </div>
           </div>
         </article>
@@ -606,20 +1105,31 @@
         <!-- Project 2: Mobile App -->
         <article class="project-card" data-category="app">
           <div class="project-banner banner-app">
-            📱
+            🧮
             <span class="project-type">Mobile App</span>
           </div>
           <div class="project-body">
-            <h3>FocusFlow Habit Tracker</h3>
-            <p>Minimalist offline-first productivity and habit tracking app featuring clean analytics and custom reminders.</p>
+            <h3>PocketCalc &amp; Habit Tracker</h3>
+            <p>Clean, offline-first utility suite combining a fast expression calculator, converter, and daily habit logs.</p>
             <div class="tags">
               <span class="tag">Flutter</span>
               <span class="tag">Dart</span>
               <span class="tag">SQLite</span>
             </div>
             <div class="project-links">
-              <a href="https://github.com/YOUR_USERNAME" target="_blank" rel="noopener">GitHub Repo &rarr;</a>
-              <a href="#">Play Store &rarr;</a>
+              <a href="https://play.google.com/store/apps" target="_blank" rel="noopener" class="play-badge">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <path d="M3.609 1.814L13.792 12 3.61 22.186a1.75 1.75 0 01-.61-1.335V3.149c0-.525.23-.998.609-1.335z" fill="#00D2FF"/>
+                  <path d="M17.204 8.588L13.792 12l3.412 3.412 3.854-2.188c.696-.395.696-1.453 0-1.848l-3.854-2.188z" fill="#FFCE00"/>
+                  <path d="M17.204 15.412L13.792 12 3.609 22.186c.42.37 1.044.458 1.622.13l11.973-6.904z" fill="#FF3A44"/>
+                  <path d="M17.204 8.588L5.231 1.684c-.578-.328-1.202-.24-1.622.13L13.792 12l3.412-3.412z" fill="#00F076"/>
+                </svg>
+                <span class="play-badge-text">
+                  <span class="play-badge-small">Get it on</span>
+                  <span class="play-badge-main" style="font-size:0.82rem;">Google Play</span>
+                </span>
+              </a>
+              <a href="https://github.com/YOUR_USERNAME" target="_blank" rel="noopener" class="project-link-text">GitHub Repo &rarr;</a>
             </div>
           </div>
         </article>
@@ -639,10 +1149,52 @@
               <span class="tag">Mobile</span>
             </div>
             <div class="project-links">
-              <a href="https://github.com/YOUR_USERNAME" target="_blank" rel="noopener">GitHub Repo &rarr;</a>
-              <a href="#">Coming Soon</a>
+              <a href="https://github.com/YOUR_USERNAME" target="_blank" rel="noopener" class="project-link-text">GitHub Repo &rarr;</a>
+              <span style="color: var(--text-muted); font-size: 0.85rem;">Coming Soon</span>
             </div>
           </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- BLOG / DEVLOG SECTION -->
+    <section id="blog" class="container">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Devlog &amp; Blog</h2>
+          <p class="section-subtitle">Notes on mobile app architecture, game physics, and shipping to Google Play.</p>
+        </div>
+      </div>
+
+      <div class="blog-grid">
+        <article class="blog-card">
+          <div class="blog-meta">
+            <span class="blog-category">Game Dev</span>
+            <span>Nov 2026 &bull; 3 min read</span>
+          </div>
+          <h3>Building Smooth 60 FPS Touch Controls for Mobile Games</h3>
+          <p>How input buffering, delta-time physics, and responsive hitboxes turn a basic aeroplane prototype into a fun arcade game.</p>
+          <button class="read-more-btn" data-post="0">Read Article &rarr;</button>
+        </article>
+
+        <article class="blog-card">
+          <div class="blog-meta">
+            <span class="blog-category">Mobile Apps</span>
+            <span>Oct 2026 &bull; 4 min read</span>
+          </div>
+          <h3>Designing PocketCalc: Clean UI &amp; Safe Math Parsing</h3>
+          <p>Why avoiding naive evaluation matters in utility apps and how to build snappy button feedback on small screens.</p>
+          <button class="read-more-btn" data-post="1">Read Article &rarr;</button>
+        </article>
+
+        <article class="blog-card">
+          <div class="blog-meta">
+            <span class="blog-category">Publishing</span>
+            <span>Sep 2026 &bull; 5 min read</span>
+          </div>
+          <h3>My Checklist Before Releasing on Google Play</h3>
+          <p>From App Bundles (AAB) and adaptive icons to store screenshots and privacy policy hosting on GitHub Pages.</p>
+          <button class="read-more-btn" data-post="2">Read Article &rarr;</button>
         </article>
       </div>
     </section>
@@ -674,8 +1226,8 @@
             <span class="tag">Unity</span>
             <span class="tag">Godot Engine</span>
             <span class="tag">C#</span>
-            <span class="tag">2D/3D Physics</span>
-            <span class="tag">Shaders</span>
+            <span class="tag">HTML5 Canvas</span>
+            <span class="tag">2D Physics</span>
           </div>
         </div>
 
@@ -685,7 +1237,7 @@
             <span class="tag">Git &amp; GitHub</span>
             <span class="tag">Figma</span>
             <span class="tag">Aseprite</span>
-            <span class="tag">Blender</span>
+            <span class="tag">Google Play Console</span>
             <span class="tag">CI/CD</span>
           </div>
         </div>
@@ -700,11 +1252,30 @@
         <div class="social-links">
           <a href="mailto:youremail@example.com" class="btn btn-primary">Send Email</a>
           <a href="https://github.com/YOUR_USERNAME" target="_blank" rel="noopener" class="btn btn-outline">GitHub</a>
-          <a href="https://itch.io" target="_blank" rel="noopener" class="btn btn-outline">itch.io</a>
+          <a href="https://play.google.com/store/apps" target="_blank" rel="noopener" class="play-badge">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path d="M3.609 1.814L13.792 12 3.61 22.186a1.75 1.75 0 01-.61-1.335V3.149c0-.525.23-.998.609-1.335z" fill="#00D2FF"/>
+              <path d="M17.204 8.588L13.792 12l3.412 3.412 3.854-2.188c.696-.395.696-1.453 0-1.848l-3.854-2.188z" fill="#FFCE00"/>
+              <path d="M17.204 15.412L13.792 12 3.609 22.186c.42.37 1.044.458 1.622.13l11.973-6.904z" fill="#FF3A44"/>
+              <path d="M17.204 8.588L5.231 1.684c-.578-.328-1.202-.24-1.622.13L13.792 12l3.412-3.412z" fill="#00F076"/>
+            </svg>
+            <span class="play-badge-text">
+              <span class="play-badge-small">Apps on</span>
+              <span class="play-badge-main" style="font-size:0.88rem;">Google Play</span>
+            </span>
+          </a>
         </div>
       </div>
     </section>
   </main>
+
+  <!-- BLOG ARTICLE MODAL -->
+  <div class="modal-backdrop" id="blogModal" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" id="modalClose" aria-label="Close article">&times;</button>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
 
   <footer>
     <div class="container">
@@ -714,10 +1285,9 @@
 
   <!-- JAVASCRIPT -->
   <script>
-    // Auto-update footer year
+    // ====== 1. FOOTER YEAR, MOBILE MENU & THEME ======
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Mobile Menu Toggle
     const menuToggle = document.getElementById('menuToggle');
     const navLinks = document.getElementById('navLinks');
 
@@ -725,48 +1295,558 @@
       navLinks.classList.toggle('open');
     });
 
-    // Close mobile menu when clicking a link
     navLinks.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => navLinks.classList.remove('open'));
     });
 
-    // Dark / Light Theme Toggle
     const themeToggle = document.getElementById('themeToggle');
     const htmlEl = document.documentElement;
     const savedTheme = localStorage.getItem('theme') || 'dark';
     htmlEl.setAttribute('data-theme', savedTheme);
 
     themeToggle.addEventListener('click', () => {
-      const current = htmlEl.getAttribute('data-theme');
-      const next = current === 'dark' ? 'light' : 'dark';
+      const next = htmlEl.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
       htmlEl.setAttribute('data-theme', next);
       localStorage.setItem('theme', next);
     });
 
-    // Project Category Filter
+    // ====== 2. PROJECT FILTERING ======
     const filterButtons = document.querySelectorAll('.filter-btn');
     const projectCards = document.querySelectorAll('.project-card');
 
     filterButtons.forEach(btn => {
       btn.addEventListener('click', () => {
-        // Update active button
         filterButtons.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-
         const filter = btn.getAttribute('data-filter');
 
         projectCards.forEach(card => {
           const category = card.getAttribute('data-category');
-          if (filter === 'all' || category === filter) {
-            card.classList.remove('hidden');
-          } else {
-            card.classList.add('hidden');
-          }
+          card.classList.toggle('hidden', !(filter === 'all' || category === filter));
         });
       });
     });
+
+    // ====== 3. AEROPLANE FLYING GAME ======
+    (() => {
+      const canvas = document.getElementById('planeCanvas');
+      const ctx = canvas.getContext('2d');
+      const overlay = document.getElementById('gameOverlay');
+      const overlayTitle = document.getElementById('overlayTitle');
+      const overlayDesc = document.getElementById('overlayDesc');
+      const startBtn = document.getElementById('startGameBtn');
+      const scoreEl = document.getElementById('gameScore');
+      const bestEl = document.getElementById('gameBest');
+
+      let bestScore = Number(localStorage.getItem('skypilot_best') || 0);
+      bestEl.textContent = bestScore;
+
+      let state = 'idle'; // 'idle' | 'playing' | 'gameover'
+      let score = 0;
+      let frameCount = 0;
+      let lastTime = 0;
+
+      const plane = {
+        x: 110,
+        y: 165,
+        vy: 0,
+        radius: 14,
+        angle: 0
+      };
+
+      const clouds = [
+        { x: 90, y: 55, scale: 0.9, speed: 0.45 },
+        { x: 290, y: 95, scale: 1.1, speed: 0.35 },
+        { x: 470, y: 45, scale: 0.8, speed: 0.5 }
+      ];
+
+      let obstacles = [];
+      let stars = [];
+
+      function resetGame() {
+        score = 0;
+        frameCount = 0;
+        plane.y = canvas.height / 2;
+        plane.vy = 0;
+        plane.angle = 0;
+        obstacles = [];
+        stars = [];
+        scoreEl.textContent = '0';
+      }
+
+      function startGame() {
+        resetGame();
+        state = 'playing';
+        overlay.classList.add('hidden');
+        flap();
+      }
+
+      function endGame() {
+        state = 'gameover';
+        if (score > bestScore) {
+          bestScore = score;
+          localStorage.setItem('skypilot_best', bestScore);
+          bestEl.textContent = bestScore;
+        }
+        overlayTitle.textContent = 'Crash Landing!';
+        overlayDesc.textContent = `You scored ${score} points. Best flight: ${bestScore}.`;
+        startBtn.textContent = 'Fly Again';
+        overlay.classList.remove('hidden');
+      }
+
+      function flap() {
+        if (state !== 'playing') return;
+        plane.vy = -5.6;
+      }
+
+      function spawnObstacle() {
+        const gap = 112;
+        const minTop = 45;
+        const maxTop = canvas.height - gap - 55;
+        const topHeight = Math.floor(Math.random() * (maxTop - minTop + 1)) + minTop;
+
+        obstacles.push({
+          x: canvas.width + 30,
+          width: 46,
+          top: topHeight,
+          bottom: topHeight + gap,
+          passed: false
+        });
+
+        // 70% chance to spawn a collectible star inside or slightly past the gap
+        if (Math.random() < 0.7) {
+          stars.push({
+            x: canvas.width + 53,
+            y: topHeight + gap / 2 + (Math.random() * 26 - 13),
+            collected: false
+          });
+        }
+      }
+
+      function drawCloud(c) {
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.28)';
+        ctx.beginPath();
+        ctx.arc(c.x, c.y, 18 * c.scale, 0, Math.PI * 2);
+        ctx.arc(c.x + 16 * c.scale, c.y - 6 * c.scale, 22 * c.scale, 0, Math.PI * 2);
+        ctx.arc(c.x + 34 * c.scale, c.y, 17 * c.scale, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      function drawPlane() {
+        ctx.save();
+        ctx.translate(plane.x, plane.y);
+        ctx.rotate(plane.angle);
+
+        // Tail fin
+        ctx.fillStyle = '#ef4444';
+        ctx.beginPath();
+        ctx.moveTo(-18, -2);
+        ctx.lineTo(-24, -14);
+        ctx.lineTo(-10, -4);
+        ctx.closePath();
+        ctx.fill();
+
+        // Fuselage
+        ctx.fillStyle = '#f8fafc';
+        ctx.beginPath();
+        ctx.ellipse(0, 0, 20, 9, 0, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Racing stripe
+        ctx.fillStyle = '#ef4444';
+        ctx.fillRect(-14, 1, 24, 3);
+
+        // Cockpit window
+        ctx.fillStyle = '#38bdf8';
+        ctx.beginPath();
+        ctx.ellipse(5, -3, 7, 4.5, 0, Math.PI, 0);
+        ctx.fill();
+
+        // Wing
+        ctx.fillStyle = '#cbd5e1';
+        ctx.beginPath();
+        ctx.moveTo(-4, 2);
+        ctx.lineTo(6, 2);
+        ctx.lineTo(-6, 13);
+        ctx.closePath();
+        ctx.fill();
+
+        // Spinning Propeller
+        const propH = Math.sin(frameCount * 0.8) * 11;
+        ctx.strokeStyle = '#94a3b8';
+        ctx.lineWidth = 2.5;
+        ctx.beginPath();
+        ctx.moveTo(21, -propH);
+        ctx.lineTo(21, propH);
+        ctx.stroke();
+
+        ctx.restore();
+      }
+
+      function drawStar(s) {
+        ctx.save();
+        ctx.translate(s.x, s.y);
+        ctx.rotate(frameCount * 0.05);
+        ctx.fillStyle = '#facc15';
+        ctx.beginPath();
+        for (let i = 0; i < 5; i++) {
+          ctx.lineTo(Math.cos((18 + i * 72) * Math.PI / 180) * 10, -Math.sin((18 + i * 72) * Math.PI / 180) * 10);
+          ctx.lineTo(Math.cos((54 + i * 72) * Math.PI / 180) * 4.5, -Math.sin((54 + i * 72) * Math.PI / 180) * 4.5);
+        }
+        ctx.closePath();
+        ctx.fill();
+        ctx.restore();
+      }
+
+      function update(dtScale) {
+        frameCount += dtScale;
+
+        // Clouds drift in all states
+        clouds.forEach(c => {
+          c.x -= c.speed * dtScale;
+          if (c.x < -60) c.x = canvas.width + 50;
+        });
+
+        if (state !== 'playing') {
+          if (state === 'idle') {
+            plane.y = canvas.height / 2 + Math.sin(frameCount * 0.06) * 8;
+          }
+          return;
+        }
+
+        // Plane physics
+        plane.vy += 0.27 * dtScale;
+        plane.y += plane.vy * dtScale;
+        plane.angle = Math.max(-0.45, Math.min(0.55, plane.vy * 0.065));
+
+        // Spawn obstacles periodically
+        if (obstacles.length === 0 || obstacles[obstacles.length - 1].x < canvas.width - 205) {
+          spawnObstacle();
+        }
+
+        // Move & check obstacles
+        for (let i = obstacles.length - 1; i >= 0; i--) {
+          const ob = obstacles[i];
+          ob.x -= 2.85 * dtScale;
+
+          if (!ob.passed && ob.x + ob.width < plane.x) {
+            ob.passed = true;
+            score += 1;
+            scoreEl.textContent = score;
+          }
+
+          // Collision check
+          const withinX = plane.x + plane.radius - 2 > ob.x && plane.x - plane.radius + 2 < ob.x + ob.width;
+          const hitTop = plane.y - plane.radius + 3 < ob.top;
+          const hitBottom = plane.y + plane.radius - 3 > ob.bottom;
+
+          if (withinX && (hitTop || hitBottom)) {
+            endGame();
+          }
+
+          if (ob.x + ob.width < -20) {
+            obstacles.splice(i, 1);
+          }
+        }
+
+        // Collect stars
+        for (let i = stars.length - 1; i >= 0; i--) {
+          const s = stars[i];
+          s.x -= 2.85 * dtScale;
+          const dx = plane.x - s.x;
+          const dy = plane.y - s.y;
+          if (!s.collected && Math.hypot(dx, dy) < plane.radius + 11) {
+            s.collected = true;
+            score += 5;
+            scoreEl.textContent = score;
+          }
+          if (s.collected || s.x < -20) {
+            stars.splice(i, 1);
+          }
+        }
+
+        // Ceiling / Ground bounds
+        if (plane.y - plane.radius < 0) {
+          plane.y = plane.radius;
+          plane.vy = 0;
+        }
+        if (plane.y + plane.radius > canvas.height - 16) {
+          endGame();
+        }
+      }
+
+      function render() {
+        // Sky gradient
+        const grad = ctx.createLinearGradient(0, 0, 0, canvas.height);
+        grad.addColorStop(0, '#0284c7');
+        grad.addColorStop(0.75, '#38bdf8');
+        grad.addColorStop(1, '#bae6fd');
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        clouds.forEach(drawCloud);
+
+        // Obstacles (skyline towers)
+        obstacles.forEach(ob => {
+          ctx.fillStyle = '#1e293b';
+          ctx.fillRect(ob.x, 0, ob.width, ob.top);
+          ctx.fillRect(ob.x, ob.bottom, ob.width, canvas.height - ob.bottom - 16);
+
+          // Accent trim
+          ctx.fillStyle = '#6366f1';
+          ctx.fillRect(ob.x - 3, ob.top - 10, ob.width + 6, 10);
+          ctx.fillRect(ob.x - 3, ob.bottom, ob.width + 6, 10);
+        });
+
+        stars.forEach(drawStar);
+
+        // Ground strip
+        ctx.fillStyle = '#10b981';
+        ctx.fillRect(0, canvas.height - 16, canvas.width, 16);
+        ctx.fillStyle = '#059669';
+        ctx.fillRect(0, canvas.height - 16, canvas.width, 4);
+
+        drawPlane();
+      }
+
+      function loop(timestamp) {
+        if (!lastTime) lastTime = timestamp;
+        const dt = Math.min(32, timestamp - lastTime);
+        lastTime = timestamp;
+
+        update(dt / 16.667);
+        render();
+        requestAnimationFrame(loop);
+      }
+
+      startBtn.addEventListener('click', startGame);
+      canvas.addEventListener('pointerdown', (e) => {
+        e.preventDefault();
+        if (state === 'playing') flap();
+      });
+
+      window.addEventListener('keydown', (e) => {
+        if ((e.code === 'Space' || e.code === 'ArrowUp') && state === 'playing') {
+          e.preventDefault();
+          flap();
+        }
+      });
+
+      requestAnimationFrame(loop);
+    })();
+
+    // ====== 4. CALCULATOR APP ======
+    (() => {
+      const displayEl = document.getElementById('calcDisplay');
+      const historyEl = document.getElementById('calcHistory');
+      const keysEl = document.getElementById('calcKeys');
+
+      let expr = '';
+      let justEvaluated = false;
+
+      function formatDisplay(str) {
+        return str.replace(/\*/g, '×').replace(/\//g, '÷') || '0';
+      }
+
+      // Safe math parser (Shunting-Yard -> RPN evaluation)
+      function safeEvaluate(raw) {
+        const tokens = raw.match(/(\d+\.?\d*|\.\d+|[+\-*/%])/g);
+        if (!tokens) return 0;
+
+        // Handle leading minus
+        const cleaned = [];
+        for (let i = 0; i < tokens.length; i++) {
+          if (tokens[i] === '-' && (i === 0 || '+-*/%'.includes(tokens[i - 1]))) {
+            if (i + 1 < tokens.length && !isNaN(tokens[i + 1])) {
+              cleaned.push(String(-parseFloat(tokens[i + 1])));
+              i++;
+              continue;
+            }
+          }
+          cleaned.push(tokens[i]);
+        }
+
+        const prec = { '+': 1, '-': 1, '*': 2, '/': 2, '%': 2 };
+        const output = [];
+        const ops = [];
+
+        cleaned.forEach(tok => {
+          if (!isNaN(tok)) {
+            output.push(parseFloat(tok));
+          } else if (tok in prec) {
+            while (ops.length && prec[ops[ops.length - 1]] >= prec[tok]) {
+              output.push(ops.pop());
+            }
+            ops.push(tok);
+          }
+        });
+
+        while (ops.length) output.push(ops.pop());
+
+        const stack = [];
+        for (const item of output) {
+          if (typeof item === 'number') {
+            stack.push(item);
+          } else {
+            const b = stack.pop();
+            const a = stack.pop();
+            if (a === undefined || b === undefined) throw new Error('Invalid');
+            if (item === '+') stack.push(a + b);
+            else if (item === '-') stack.push(a - b);
+            else if (item === '*') stack.push(a * b);
+            else if (item === '/') {
+              if (b === 0) throw new Error('Divide by 0');
+              stack.push(a / b);
+            } else if (item === '%') {
+              stack.push(a % b);
+            }
+          }
+        }
+        return Number(stack[0].toPrecision(12));
+      }
+
+      function updateScreen() {
+        displayEl.textContent = formatDisplay(expr);
+      }
+
+      keysEl.addEventListener('click', (e) => {
+        const btn = e.target.closest('button');
+        if (!btn) return;
+
+        const val = btn.dataset.val;
+        const action = btn.dataset.action;
+
+        if (action === 'clear') {
+          expr = '';
+          historyEl.textContent = '';
+          justEvaluated = false;
+          updateScreen();
+          return;
+        }
+
+        if (action === 'del') {
+          if (justEvaluated) {
+            expr = '';
+            justEvaluated = false;
+          } else {
+            expr = expr.slice(0, -1);
+          }
+          updateScreen();
+          return;
+        }
+
+        if (action === 'equals') {
+          if (!expr) return;
+          try {
+            const sanitized = '+-*/%'.includes(expr.slice(-1)) ? expr.slice(0, -1) : expr;
+            const result = safeEvaluate(sanitized);
+            historyEl.textContent = formatDisplay(sanitized) + ' =';
+            expr = String(result);
+            justEvaluated = true;
+            updateScreen();
+          } catch {
+            historyEl.textContent = formatDisplay(expr);
+            expr = '';
+            displayEl.textContent = 'Error';
+            justEvaluated = true;
+          }
+          return;
+        }
+
+        if (val !== undefined) {
+          const isOp = '+-*/%'.includes(val);
+          if (justEvaluated && !isOp) {
+            expr = '';
+            historyEl.textContent = '';
+          }
+          justEvaluated = false;
+
+          // Prevent duplicate operators
+          if (isOp && (!expr || '+-*/%'.includes(expr.slice(-1)))) {
+            if (expr && val !== '-') {
+              expr = expr.slice(0, -1) + val;
+              updateScreen();
+            }
+            return;
+          }
+
+          // Prevent multiple decimals in the same number segment
+          if (val === '.') {
+            const parts = expr.split(/[+\-*/%]/);
+            if (parts[parts.length - 1].includes('.')) return;
+            if (!parts[parts.length - 1]) expr += '0';
+          }
+
+          expr += val;
+          updateScreen();
+        }
+      });
+    })();
+
+    // ====== 5. BLOG ARTICLE MODAL ======
+    (() => {
+      const posts = [
+        {
+          category: 'Game Dev &bull; Nov 2026',
+          title: 'Building Smooth 60 FPS Touch Controls for Mobile Games',
+          paragraphs: [
+            'When I started prototyping SkyPilot, my first mistake was tying plane movement directly to frame counts instead of elapsed delta-time. On 120Hz mobile screens, the plane fell twice as fast as on 60Hz monitors.',
+            'Switching to delta-normalized velocity and giving the aeroplane a slightly forgiving circular hitbox immediately made gameplay feel fairer and more responsive.',
+            'Next up, I plan to port the core loop into Unity and add parallax city backgrounds, sound effects, and Google Play Games achievements.'
+          ]
+        },
+        {
+          category: 'Mobile Apps &bull; Oct 2026',
+          title: 'Designing PocketCalc: Clean UI & Safe Math Parsing',
+          paragraphs: [
+            'Utility apps like calculators live or die by speed and reliability. Users expect instant response on every tap, clear expression history, and zero crashes on edge cases like dividing by zero or double decimals.',
+            'Instead of relying on unsafe expression evaluation, PocketCalc uses a lightweight Shunting-Yard parser that respects operator precedence (multiplication and division before addition and subtraction).',
+            'I am currently bringing this exact layout to Flutter with haptic button feedback and custom themes for Android.'
+          ]
+        },
+        {
+          category: 'Publishing &bull; Sep 2026',
+          title: 'My Checklist Before Releasing on Google Play',
+          paragraphs: [
+            'Shipping an Android app or game involves more than writing clean code. Before submitting an Android App Bundle (.aab) to the Google Play Console, make sure you have:',
+            '1. Adaptive launcher icons and at least 4 high-resolution phone screenshots.',
+            '2. A clear, hosted Privacy Policy URL (hosting it right inside your GitHub Pages repository is completely free and fast!).',
+            '3. Closed testing with real Android devices to verify screen scaling across different aspect ratios.'
+          ]
+        }
+      ];
+
+      const modal = document.getElementById('blogModal');
+      const modalBody = document.getElementById('modalBody');
+      const modalClose = document.getElementById('modalClose');
+
+      document.querySelectorAll('.read-more-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const post = posts[Number(btn.dataset.post)];
+          if (!post) return;
+          modalBody.innerHTML = `
+            <span class="blog-category">${post.category}</span>
+            <h3 id="modalTitle">${post.title}</h3>
+            ${post.paragraphs.map(p => `<p>${p}</p>`).join('')}
+          `;
+          modal.classList.add('open');
+          modal.setAttribute('aria-hidden', 'false');
+        });
+      });
+
+      function closeModal() {
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden', 'true');
+      }
+
+      modalClose.addEventListener('click', closeModal);
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+      });
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+      });
+    })();
   </script>
 </body>
 </html>
-
-
