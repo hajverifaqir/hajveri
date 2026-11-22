@@ -1,0 +1,815 @@
+Here is a complete, modern, responsive portfolio website built specifically for a **mobile app and game developer**. 
+
+It requires **zero build tools or frameworks**—just pure HTML, CSS, and JavaScript in a single `index.html` file so you can upload it straight to GitHub and go live in minutes.
+
+### Features Included:
+* **Interactive Project Filter:** Switch smoothly between *All*, *Games*, and *Mobile Apps*.
+* **Dark / Light Mode Toggle:** Remembers user preference (defaults to a sleek dark developer theme).
+* **Mobile Responsive:** Clean layout with a working mobile navigation menu.
+* **Zero Broken Assets:** Uses crisp inline SVG icons and clean CSS placeholders ready for your app icons/screenshots.
+
+---
+
+### 1. The Code (`index.html`)
+
+Create a file named `index.html` and paste the following code:
+
+```html
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Name | Mobile App & Game Developer</title>
+  <meta name="description" content="Portfolio of a mobile app and indie game developer. Building engaging apps and games for iOS and Android." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ====== CSS VARIABLES & THEME ====== */
+    :root {
+      --bg: #0b0f19;
+      --bg-card: #131a2a;
+      --bg-card-hover: #1a2338;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --border: #1e293b;
+      --accent: #6366f1;
+      --accent-glow: rgba(99, 102, 241, 0.25);
+      --accent-secondary: #10b981;
+      --nav-bg: rgba(11, 15, 25, 0.85);
+    }
+
+    [data-theme="light"] {
+      --bg: #f8fafc;
+      --bg-card: #ffffff;
+      --bg-card-hover: #f1f5f9;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --accent: #4f46e5;
+      --accent-glow: rgba(79, 70, 229, 0.15);
+      --accent-secondary: #059669;
+      --nav-bg: rgba(248, 250, 252, 0.85);
+    }
+
+    /* ====== RESET & BASE ====== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      line-height: 1.2;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* ====== NAVBAR ====== */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--nav-bg);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 70px;
+    }
+
+    .logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .icon-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .icon-btn:hover {
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .menu-toggle {
+      display: none;
+    }
+
+    /* ====== HERO ====== */
+    .hero {
+      padding: 6rem 0 4.5rem;
+      text-align: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 0.9rem;
+      border-radius: 999px;
+      background: var(--accent-glow);
+      color: var(--accent);
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(99, 102, 241, 0.3);
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-secondary);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.02em;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #6366f1, #06b6d4, #10b981);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      max-width: 620px;
+      margin: 0 auto 2.25rem;
+      color: var(--text-muted);
+      font-size: 1.125rem;
+    }
+
+    .hero-cta {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.8rem 1.5rem;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #ffffff;
+      box-shadow: 0 4px 18px var(--accent-glow);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.1);
+    }
+
+    .btn-outline {
+      background: var(--bg-card);
+      border-color: var(--border);
+      color: var(--text);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    /* ====== SECTIONS ====== */
+    section {
+      padding: 4.5rem 0;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .section-subtitle {
+      color: var(--text-muted);
+    }
+
+    /* ====== FILTER BUTTONS ====== */
+    .filter-group {
+      display: flex;
+      gap: 0.5rem;
+      background: var(--bg-card);
+      padding: 0.35rem;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+
+    .filter-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 0.45rem 1rem;
+      border-radius: 7px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .filter-btn.active {
+      background: var(--accent);
+      color: #ffffff;
+    }
+
+    /* ====== PROJECT GRID ====== */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent);
+      background: var(--bg-card-hover);
+    }
+
+    .project-card.hidden {
+      display: none;
+    }
+
+    .project-banner {
+      height: 170px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      font-size: 3rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .banner-game {
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(236, 72, 153, 0.2));
+    }
+
+    .banner-app {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(6, 182, 212, 0.2));
+    }
+
+    .project-type {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.25rem 0.65rem;
+      border-radius: 999px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .project-body {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .project-body h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-body p {
+      color: var(--text-muted);
+      font-size: 0.925rem;
+      margin-bottom: 1.25rem;
+      flex-grow: 1;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .tag {
+      font-size: 0.78rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+
+    .project-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      color: var(--accent);
+    }
+
+    .project-links a:hover {
+      text-decoration: underline;
+    }
+
+    /* ====== TECH STACK ====== */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .skill-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.5rem;
+    }
+
+    .skill-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    /* ====== CONTACT ====== */
+    .contact-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .contact-box h2 {
+      font-size: 2rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .contact-box p {
+      color: var(--text-muted);
+      max-width: 520px;
+      margin: 0 auto 2rem;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* ====== FOOTER ====== */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    /* ====== MOBILE RESPONSIVE ====== */
+    @media (max-width: 768px) {
+      .nav-links {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: var(--bg);
+        border-bottom: 1px solid var(--border);
+        flex-direction: column;
+        padding: 1.5rem;
+        gap: 1.25rem;
+        display: none;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: grid;
+      }
+
+      .hero {
+        padding: 4rem 0 3rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <header>
+    <div class="container nav-inner">
+      <a href="#" class="logo">
+        &lt;<span>DevStudio</span> /&gt;
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#projects">Apps &amp; Games</a></li>
+        <li><a href="#skills">Tech Stack</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="icon-btn" id="themeToggle" aria-label="Toggle Dark/Light Mode" title="Toggle theme">
+          <svg id="themeIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+
+        <button class="icon-btn menu-toggle" id="menuToggle" aria-label="Open menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero container">
+      <div class="badge">
+        <span class="badge-dot"></span>
+        Building Mobile Apps &amp; Indie Games
+      </div>
+      <h1>
+        Crafting <span class="gradient-text">Playful Games</span> &amp; <br />
+        Intuitive Mobile Experiences
+      </h1>
+      <p>
+        Hi, I'm <strong>Your Name</strong> — a developer focused on creating responsive iOS &amp; Android apps and engaging 2D/3D mobile games.
+      </p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn btn-primary">Explore My Work</a>
+        <a href="https://github.com/YOUR_USERNAME" target="_blank" rel="noopener" class="btn btn-outline">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+          GitHub Profile
+        </a>
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects" class="container">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Featured Projects</h2>
+          <p class="section-subtitle">Upcoming and released mobile applications and games.</p>
+        </div>
+
+        <div class="filter-group" role="tablist">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="game">Games</button>
+          <button class="filter-btn" data-filter="app">Mobile Apps</button>
+        </div>
+      </div>
+
+      <div class="projects-grid">
+        <!-- Project 1: Game -->
+        <article class="project-card" data-category="game">
+          <div class="project-banner banner-game">
+            🎮
+            <span class="project-type">Mobile Game</span>
+          </div>
+          <div class="project-body">
+            <h3>Project Neon Runner</h3>
+            <p>A fast-paced endless cyberpunk platformer built for mobile touchscreens with procedural level generation.</p>
+            <div class="tags">
+              <span class="tag">Unity</span>
+              <span class="tag">C#</span>
+              <span class="tag">Android / iOS</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/YOUR_USERNAME" target="_blank" rel="noopener">Source Code &rarr;</a>
+              <a href="#">Devlog / Demo &rarr;</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2: Mobile App -->
+        <article class="project-card" data-category="app">
+          <div class="project-banner banner-app">
+            📱
+            <span class="project-type">Mobile App</span>
+          </div>
+          <div class="project-body">
+            <h3>FocusFlow Habit Tracker</h3>
+            <p>Minimalist offline-first productivity and habit tracking app featuring clean analytics and custom reminders.</p>
+            <div class="tags">
+              <span class="tag">Flutter</span>
+              <span class="tag">Dart</span>
+              <span class="tag">SQLite</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/YOUR_USERNAME" target="_blank" rel="noopener">GitHub Repo &rarr;</a>
+              <a href="#">Play Store &rarr;</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 3: Game -->
+        <article class="project-card" data-category="game">
+          <div class="project-banner banner-game">
+            🧩
+            <span class="project-type">Puzzle Game</span>
+          </div>
+          <div class="project-body">
+            <h3>TileCraft Logic</h3>
+            <p>A relaxing geometric puzzle game with 60+ handcrafted levels, haptic feedback, and daily challenges.</p>
+            <div class="tags">
+              <span class="tag">Godot</span>
+              <span class="tag">GDScript</span>
+              <span class="tag">Mobile</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/YOUR_USERNAME" target="_blank" rel="noopener">GitHub Repo &rarr;</a>
+              <a href="#">Coming Soon</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- TECH STACK SECTION -->
+    <section id="skills" class="container">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Tools &amp; Tech Stack</h2>
+          <p class="section-subtitle">Technologies I use to bring ideas to mobile devices.</p>
+        </div>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h3>📱 Mobile Development</h3>
+          <div class="skill-list">
+            <span class="tag">Flutter / Dart</span>
+            <span class="tag">React Native</span>
+            <span class="tag">Kotlin</span>
+            <span class="tag">Swift</span>
+            <span class="tag">Firebase</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <h3>🕹️ Game Development</h3>
+          <div class="skill-list">
+            <span class="tag">Unity</span>
+            <span class="tag">Godot Engine</span>
+            <span class="tag">C#</span>
+            <span class="tag">2D/3D Physics</span>
+            <span class="tag">Shaders</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <h3>🎨 Design &amp; Workflow</h3>
+          <div class="skill-list">
+            <span class="tag">Git &amp; GitHub</span>
+            <span class="tag">Figma</span>
+            <span class="tag">Aseprite</span>
+            <span class="tag">Blender</span>
+            <span class="tag">CI/CD</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="container">
+      <div class="contact-box">
+        <h2>Let's Build Something Together</h2>
+        <p>Have an app idea, game jam collaboration, or feedback on one of my releases? Feel free to reach out.</p>
+        <div class="social-links">
+          <a href="mailto:youremail@example.com" class="btn btn-primary">Send Email</a>
+          <a href="https://github.com/YOUR_USERNAME" target="_blank" rel="noopener" class="btn btn-outline">GitHub</a>
+          <a href="https://itch.io" target="_blank" rel="noopener" class="btn btn-outline">itch.io</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; <span id="year"></span> Your Name. Hosted on GitHub Pages.</p>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    // Auto-update footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile Menu Toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+
+    // Close mobile menu when clicking a link
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => navLinks.classList.remove('open'));
+    });
+
+    // Dark / Light Theme Toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const htmlEl = document.documentElement;
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    htmlEl.setAttribute('data-theme', savedTheme);
+
+    themeToggle.addEventListener('click', () => {
+      const current = htmlEl.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      htmlEl.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    });
+
+    // Project Category Filter
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Update active button
+        filterButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.getAttribute('data-filter');
+
+        projectCards.forEach(card => {
+          const category = card.getAttribute('data-category');
+          if (filter === 'all' || category === filter) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
+```
+
+---
+
+### 2. Quick Customization Checklist
+Before publishing, press `Ctrl + F` (or `Cmd + F`) in your editor and update these placeholders:
+1. **`Your Name`** & **`DevStudio`**: Replace with your name or indie studio brand.
+2. **`YOUR_USERNAME`**: Replace with your actual GitHub username.
+3. **`youremail@example.com`**: Replace with your contact email.
+4. **Projects & Tech Stack**: Edit the three sample cards in `#projects` and tags in `#skills` to match the engines/frameworks you plan to use (e.g., Unity, Godot, Flutter, React Native, Swift). *(Tip: Once you have app screenshots, you can replace the emoji inside `.project-banner` with an `<img src="screenshots/app1.png" ...>`).*
+
+---
+
+### 3. How to Deploy on GitHub Pages
+
+1. **Create a Repository:**
+   * Go to GitHub and create a **new public repository** named exactly:
+     `YOUR_USERNAME.github.io` *(replace `YOUR_USERNAME` with your GitHub username)*.
+2. **Upload `index.html`:**
+   * Click **Add file → Create new file** (or push via Git), name it `index.html`, paste the code above, and commit it to the `main` branch.
+3. **Enable GitHub Pages:**
+   * Go to your repository's **Settings** → **Pages** (in the left sidebar).
+   * Under **Build and deployment → Source**, choose **Deploy from a branch**.
+   * Select `main` and `/ (root)`, then click **Save**.
+4. **Visit Your Site:**
+   * Within 1–2 minutes, your site will be live at `https://YOUR_USERNAME.github.io`.
+
+If you'd like to add a **devlog/blog section**, **store badges (Google Play / App Store)**, or a **privacy policy page** (which Google Play and Apple's App Store require when you publish mobile apps/games), let me know and I can generate those for you too!
